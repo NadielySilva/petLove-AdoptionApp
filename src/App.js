@@ -19,14 +19,6 @@ import myTulio from "./Assets/dog-tulio.jpg"
 
 export default class MyPet extends Component{
 
-
-  // {
-  //   greet:
-  //   ['Hi, my name is ',
-  //   'Hello, I am ',
-  //   'Hey there, my name is ']
-  // },
-
 state = {
   dogs:[{
     name:'Tulio',
@@ -53,7 +45,7 @@ state = {
     pic: myTobie
   },
   {
-    name:'Nina e Estrela',
+    name:'Nina and Estrela',
     breed:'doggies',
     age:'50 days',
     pic: myNinaStar
@@ -94,10 +86,11 @@ state = {
 
 dogList = () =>{
   this.setState({list : this.state.dogs.map((item) =>(
-    <div>
-      <figure><image>{}</image></figure>
-      <big><p>{item.name}</p></big>
-      <p>Hi there! I am a {item.age} {item.breed} </p>
+    <div className='profile'>
+      <figure><img src={item.pic}/></figure>
+      <div className='info'>
+        <p>Hi there! I am {item.name} a {item.age} {item.breed} </p>
+      </div>
     </div>
   ))})
 }
@@ -105,10 +98,11 @@ dogList = () =>{
 
 catList = () =>{
   this.setState({list : this.state.cats.map((item) =>(
-    <div>
-      <figure><img>{}</img></figure>
-      <big><p>{item.name}</p></big>
-      <p>Hi there! I am a {item.age} {item.breed} </p>
+    <div className='profile'>
+      <figure><img src={item.pic}/></figure>
+      <div className='info'>
+        <p>Hi there! I am {item.name} a {item.age} {item.breed} </p>
+      </div>
     </div>
   ))})
 }
@@ -125,8 +119,8 @@ render(){
     <div className='container'>
       <h2>Who's gonna be your new friend?</h2>
       <div className='btn'>
-        <button type="button" onClick={this.dogList}><img src={myDogButton}/></button>
-        <button type="button" onClick={this.catList}><img src={myCatButton} /></button>
+        <button type="button" onClick={this.dogList}><img className='petbtn' src={myDogButton}/></button>
+        <button type="button" onClick={this.catList}><img className='petbtn' src={myCatButton} /></button>
         <button onClick={this.clear}><big><strong>CLEAR</strong></big></button>
       </div>
       <h2>{this.state.list}</h2>
